@@ -10,12 +10,19 @@ public class MenuControls : MonoBehaviour
     [SerializeField]
     private GameObject Menu = null;
     [SerializeField]
+    private GameObject CreditsPage = null;
+    [SerializeField]
     private GameObject QuitPrompt = null;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+
+        Menu.SetActive(true);
+        CreditsPage.SetActive(false);
+        QuitPrompt.SetActive(false);
+
+
     }
 
     // Update is called once per frame
@@ -29,6 +36,24 @@ public class MenuControls : MonoBehaviour
     {
         SceneManager.LoadScene(1);
     }
+
+
+    //pull up credits:
+
+    public void CreditsOn()
+    {
+        Menu.SetActive(false);
+        CreditsPage.SetActive(true);
+    }
+
+    public void CreditsOff()
+    {
+        Menu.SetActive(true);
+        CreditsPage.SetActive(false);
+    }
+
+
+
 
 
 
