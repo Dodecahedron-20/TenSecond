@@ -13,7 +13,7 @@ public class TestingNumbers : MonoBehaviour
     [SerializeField]
     private GameObject explosion = null;
     [SerializeField]
-    private GameObject Particles = null;
+    private GameObject Audio = null;
 
 
     //game End Assets
@@ -41,7 +41,10 @@ public class TestingNumbers : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKey(KeyCode.A))
+        {
+            wintest();
+        }
     }
 
 
@@ -59,7 +62,7 @@ public class TestingNumbers : MonoBehaviour
         else
         {
             explosion.SetActive(true);
-            //Particles.SetActive(true);
+            Audio.SetActive(true);
             Bomb.SetActive(false);
             lose = true;
 
@@ -86,8 +89,14 @@ public class TestingNumbers : MonoBehaviour
        
     }
 
+    //testing the win screen
+   private void wintest()
+    {
+        Bomb.SetActive(false);
+        lose = false;
+        EndGame();
 
-   
+    }
 
 
 
