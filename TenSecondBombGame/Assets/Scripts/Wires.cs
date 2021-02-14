@@ -38,6 +38,15 @@ public class Wires : MonoBehaviour
         }
     }
 
+    private void OnMouseDown()
+    {
+        if(gameObject.tag == "RedWire")
+        {
+            Instantiate(redWireCut, transform.position, transform.rotation);
+            Destroy(gameObject);
+        }
+    }
+
     private void OnMouseEnter()
     {
         //Cursor.SetCursor(cursorTexture, hotSpot, cursorMode);
