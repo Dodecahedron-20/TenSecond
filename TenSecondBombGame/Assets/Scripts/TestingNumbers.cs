@@ -15,6 +15,14 @@ public class TestingNumbers : MonoBehaviour
     [SerializeField]
     private AudioSource tickAudio = null;
 
+    //other UI
+    [SerializeField]
+    private Text WiresText = null;
+    [SerializeField]
+    private int WiresTotal;
+    //[SerializeField]
+    private int Wiresleft;
+
     // here go boom
     [SerializeField]
     private GameObject explosion = null;
@@ -52,6 +60,14 @@ public class TestingNumbers : MonoBehaviour
         secondsText.text = "" + secondsleft;
         UISecondsleftText.text = "00:00:" + secondsleft;
         StartCoroutine(Countdown());
+
+        //the wire coutdown
+        Wiresleft = WiresTotal;
+        WiresText.text = "Wires:" + Wiresleft + "/" + WiresTotal;
+
+
+
+
     }
 
     // Update is called once per frame
@@ -65,6 +81,8 @@ public class TestingNumbers : MonoBehaviour
         if (Input.GetKeyDown(Click))
         {
             ClipAudio.Play();
+            wiresLeftUI();
+
         }
     }
 
@@ -116,23 +134,22 @@ public class TestingNumbers : MonoBehaviour
             {
                 tickAudio.Play();
             }
-        }
-        
-        
-
-
-
-
-
-
-
-
+        }        
         // else
         //{
         //explosion.SetActive(true);
         // }
 
     }
+
+
+    private void wiresLeftUI()
+    {
+        Wiresleft--;
+        WiresText.text = "Wires:" + Wiresleft + "/" + WiresTotal;
+    }
+
+
 
     //testing the win screen
    private void wingame()
