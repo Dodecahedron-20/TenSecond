@@ -7,10 +7,7 @@ public class AnimationEvents : MonoBehaviour
 
     [SerializeField]
     private GameObject Explode = null;
-    //[SerializeField]
-   // private GameObject ExplosionTwo = null;
-    //[SerializeField]
-    //private GameObject ExplosionThree = null;
+   
 
     // Start is called before the first frame update
     void Start()
@@ -24,16 +21,7 @@ public class AnimationEvents : MonoBehaviour
         
     }
 
-   // public void ExTwo()
-   // {
-        //ExplosionTwo.SetActive(true);
-   // }
-
-   // public void ExThree()
-   // {
-    //    ExplosionThree.SetActive(true);
-    //}
-
+   
 
 
     public void EndExplosion()
