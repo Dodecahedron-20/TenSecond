@@ -5,11 +5,17 @@ using UnityEngine.UI;
 
 public class TestingNumbers : MonoBehaviour
 {
-
+    //tick tick tick, time variables:
     [SerializeField]
     private int secondsleft;
     [SerializeField]
     private Text secondsText = null;
+    [SerializeField]
+    private Text UISecondsleftText = null;
+    [SerializeField]
+    private AudioSource tickAudio = null;
+
+    // here go boom
     [SerializeField]
     private GameObject explosion = null;
     [SerializeField]
@@ -35,6 +41,7 @@ public class TestingNumbers : MonoBehaviour
     {
         //secondsleft = 10;
         secondsText.text = "" + secondsleft;
+        UISecondsleftText.text = "00:00:" + secondsleft;
         StartCoroutine(Countdown());
     }
 
@@ -81,6 +88,8 @@ public class TestingNumbers : MonoBehaviour
         {
             secondsleft--;
             secondsText.text = "" + secondsleft;
+            UISecondsleftText.text = "00:00:0" + secondsleft;
+            tickAudio.Play();
         }
        // else
         //{
