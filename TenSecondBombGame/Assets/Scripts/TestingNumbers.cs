@@ -19,7 +19,7 @@ public class TestingNumbers : MonoBehaviour
     [SerializeField]
     private GameObject explosion = null;
     [SerializeField]
-    private GameObject Audio = null;
+    private AudioSource boomAudio = null;
 
 
     //game End Assets
@@ -30,7 +30,7 @@ public class TestingNumbers : MonoBehaviour
     [SerializeField]
     private Text OutcomeText = null;
 
-    private bool lose = false;
+    private bool win = false;
 
     //Bomb thing???
     [SerializeField]
@@ -50,7 +50,7 @@ public class TestingNumbers : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.A))
         {
-            wintest();
+            wingame();
         }
     }
 
@@ -58,51 +58,72 @@ public class TestingNumbers : MonoBehaviour
    
     IEnumerator Countdown()
     {
-        yield return new WaitForSeconds(1);
+        
 
-        SecondGone();
-
-        if(secondsleft > 0)
+        if (win != true)
         {
-            StartCoroutine(Countdown());
-        }
-        else
-        {
-            explosion.SetActive(true);
-            Audio.SetActive(true);
-            Bomb.SetActive(false);
-            lose = true;
 
             yield return new WaitForSeconds(1);
 
-            EndGame();
+            SecondGone();
+
+            if (secondsleft > 0)
+            {
+                StartCoroutine(Countdown());
+            }
+            else
+            {
+                explosion.SetActive(true);
+                boomAudio.Play();
+                Bomb.SetActive(false);
+                win = false;
+
+                yield return new WaitForSeconds(1);
+
+                EndGame();
+            }
+
         }
         
+
     }
 
 
 
     private void SecondGone()
     {
-        if (secondsleft > 0)
+       if (win == false)
         {
             secondsleft--;
             secondsText.text = "" + secondsleft;
             UISecondsleftText.text = "00:00:0" + secondsleft;
-            tickAudio.Play();
+            if (secondsleft != 0)
+            {
+                tickAudio.Play();
+            }
         }
-       // else
+        
+        
+
+
+
+
+
+
+
+
+        // else
         //{
-            //explosion.SetActive(true);
-       // }
-       
+        //explosion.SetActive(true);
+        // }
+
     }
 
     //testing the win screen
-   private void wintest()
+   private void wingame()
     {
         Bomb.SetActive(false);
-        lose = false;
+        win = true;
         EndGame();
 
     }
@@ -115,13 +136,13 @@ public class TestingNumbers : MonoBehaviour
         EndGameScreen.SetActive(true);
         FinalNumberText.text = "00:00:0" + secondsleft;
 
-        if (lose == true)
+        if (win == true)
         {
-            OutcomeText.text = "You died";
+            OutcomeText.text = "congratulations on surviving";
         }
         else
         {
-            OutcomeText.text = "congratulations on surviving";
+            OutcomeText.text = "You died";
         }
 
     }
