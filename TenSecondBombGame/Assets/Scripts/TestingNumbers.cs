@@ -29,12 +29,21 @@ public class TestingNumbers : MonoBehaviour
     private Text FinalNumberText = null;
     [SerializeField]
     private Text OutcomeText = null;
+    [SerializeField]
+    private GameObject ScreenUI = null;
 
     private bool win = false;
 
     //Bomb thing???
     [SerializeField]
     private GameObject Bomb = null;
+
+    //making a clip noise when clicking
+    [SerializeField]
+    private AudioSource ClipAudio = null;
+    [SerializeField]
+    private KeyCode Click;
+
 
     // Start is called before the first frame update
     void Start()
@@ -51,6 +60,11 @@ public class TestingNumbers : MonoBehaviour
         if (Input.GetKey(KeyCode.A))
         {
             wingame();
+        }
+
+        if (Input.GetKeyDown(Click))
+        {
+            ClipAudio.Play();
         }
     }
 
@@ -76,6 +90,7 @@ public class TestingNumbers : MonoBehaviour
                 explosion.SetActive(true);
                 boomAudio.Play();
                 Bomb.SetActive(false);
+                ScreenUI.SetActive(false);
                 win = false;
 
                 yield return new WaitForSeconds(1);
@@ -139,6 +154,7 @@ public class TestingNumbers : MonoBehaviour
         if (win == true)
         {
             OutcomeText.text = "congratulations on surviving";
+            ScreenUI.SetActive(false);
         }
         else
         {
