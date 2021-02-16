@@ -31,8 +31,15 @@ public class TestingNumbers : MonoBehaviour
     [SerializeField]
     private GameObject explosion = null;
     [SerializeField]
+    private GameObject explosionTwo = null;
+    [SerializeField]
+    private GameObject explosionThree = null;
+    [SerializeField]
     private AudioSource boomAudio = null;
-
+    [SerializeField]
+    private AudioSource boomAudio2 = null;
+    [SerializeField]
+    private AudioSource boomAudio3 = null;
 
     //game End Assets
     [SerializeField]
@@ -50,11 +57,7 @@ public class TestingNumbers : MonoBehaviour
     [SerializeField]
     private GameObject Bomb = null;
 
-    //making a clip noise when clicking
-    [SerializeField]
-    private AudioSource ClipAudio = null;
-    [SerializeField]
-    private KeyCode Click;
+   
 
 
     // Start is called before the first frame update
@@ -77,19 +80,13 @@ public class TestingNumbers : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.A))
-        {
-            wingame();
-        }
+       
 
-        if (Input.GetKeyDown(Click))
-        {
-            ClipAudio.Play();
-            //wiresLeftUI();
-
-        }
+        
+        
     }
 
+    
 
    
     IEnumerator Countdown()
@@ -109,13 +106,12 @@ public class TestingNumbers : MonoBehaviour
             }
             else
             {
-                explosion.SetActive(true);
-                boomAudio.Play();
+                StartCoroutine(KaBoom());
                 Bomb.SetActive(false);
                 ScreenUI.SetActive(false);
                 win = false;
 
-                yield return new WaitForSeconds(1);
+                yield return new WaitForSeconds(2);
 
                 EndGame();
             }
@@ -125,6 +121,22 @@ public class TestingNumbers : MonoBehaviour
 
     }
 
+
+    IEnumerator KaBoom()
+    {
+        explosion.SetActive(true);
+        boomAudio.Play();
+
+        yield return new WaitForSeconds(0.5f);
+
+        explosionTwo.SetActive(true);
+        boomAudio2.Play();
+
+        yield return new WaitForSeconds(0.3f);
+
+        explosionThree.SetActive(true);
+        boomAudio3.Play();
+    }
 
 
     private void SecondGone()
@@ -159,22 +171,24 @@ public class TestingNumbers : MonoBehaviour
     {
         if (Wiresleft == 0)
         {
-            wingame();
+            win = true;
+            StartCoroutine(WinPause());
         }
     }
 
 
 
 
-    //testing the win screen
-   private void wingame()
+  
+
+
+    IEnumerator WinPause()
     {
+        yield return new WaitForSeconds(0.5f);
+
         Bomb.SetActive(false);
-        win = true;
         EndGame();
-
     }
-
 
 
     private void EndGame()
