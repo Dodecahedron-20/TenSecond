@@ -302,51 +302,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 23f88495818c03844baf3c56b451a415, type: 3}
   m_PrefabInstance: {fileID: 3060550239495507604}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &288667921
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 288667923}
-  - component: {fileID: 288667922}
-  m_Layer: 0
-  m_Name: Cursor
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &288667922
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 288667921}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fd3c75fc557cc69439d528a7c61f3141, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  wirecutters: {fileID: 2800000, guid: 817ee6a642ce1f849b386cf1cf494d60, type: 3}
-  cursorMode: 0
---- !u!4 &288667923
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 288667921}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 146.75665, y: 440.54602, z: 169.78702}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 8
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &329011293 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8092420684605635179, guid: 0061b3ad7b78fae4785f30f09209c9ee, type: 3}

@@ -6,6 +6,7 @@ public class Rotate : MonoBehaviour
 {
     public float speed;
     bool dragging = false;
+    float tolerance = 0.01f;
     Rigidbody rb;
 
     void Start()
@@ -25,11 +26,21 @@ public class Rotate : MonoBehaviour
     {
         if(dragging)
         {
-            float x = Input.GetAxis("Mouse X") * speed * Time.fixedDeltaTime;
-            float y = Input.GetAxis("Mouse Y") * speed * Time.fixedDeltaTime;
+            float x = Input.GetAxis("Mouse X");
+            float y = Input.GetAxis("Mouse Y");
 
-            rb.AddTorque(Vector3.down * x);
-            rb.AddTorque(Vector3.right * y);
+            Vector2 dragDirection = new Vector2(x, y);
+
+            if(dragDirection.magnitude > tolerance)
+            {
+                x*= speed * Time.fixedDeltaTime;
+                y *= speed * Time.fixedDeltaTime;
+
+                rb.AddTorque(Vector3.down * x);
+                rb.AddTorque(Vector3.right * y);
+            }
+
+            
         }
     }
 
