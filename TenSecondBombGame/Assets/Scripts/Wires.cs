@@ -8,10 +8,7 @@ public class Wires : MonoBehaviour
     public GameObject[] wires;
     public GameObject[] cutWires;
 
-    int RedWire;
-    int BlueWire;
-    int GreenWire;
-    int YellowWire;
+    public LayerMask layerMask;
 
     void Start()
     {
@@ -25,32 +22,37 @@ public class Wires : MonoBehaviour
     {
         if(Input.GetMouseButtonDown(0))
         {
-            if(Physics.Raycast(Camera.main.ScreenPointToRay (Input.mousePosition), out hit, Mathf.Infinity, RedWire))
-            {
-                Debug.Log("Red Wire Pressed");
-                wires[1].SetActive(false);
-                cutWires[1].SetActive(true);
-            }
+            Debug.Log("anything");
 
-            if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, Mathf.Infinity, BlueWire))
+            if(Physics.Raycast(Camera.main.ScreenPointToRay (Input.mousePosition), out hit, Mathf.Infinity, layerMask))
             {
-                Debug.Log("Blue Wire Pressed");
-                wires[2].SetActive(false);
-                cutWires[2].SetActive(true);
-            }
+                if(hit.collider.tag == "RedWire")
+                {
+                    Debug.Log("mamma mia itsa bomb");
+                    wires[0].SetActive(false);
+                    cutWires[0].SetActive(true);
+                }
+                
+                if(hit.collider.tag == "BlueWire")
+                {
+                    Debug.Log("blue bomb");
+                    wires[1].SetActive(false);
+                    cutWires[1].SetActive(true);
+                }
 
-            if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, Mathf.Infinity, GreenWire))
-            {
-                Debug.Log("Green Wire Pressed");
-                wires[3].SetActive(false);
-                cutWires[3].SetActive(true);
-            }
+                if(hit.collider.tag == "GreenWire")
+                {
+                    Debug.Log("green bomb");
+                    wires[2].SetActive(false);
+                    cutWires[2].SetActive(true);
+                }
 
-            if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, Mathf.Infinity, YellowWire))
-            {
-                Debug.Log("Yellow Wire Pressed");
-                wires[4].SetActive(false);
-                cutWires[4].SetActive(true);
+                if(hit.collider.tag == "YellowWire")
+                {
+                    Debug.Log("yellow bomb");
+                    wires[3].SetActive(false);
+                    cutWires[3].SetActive(true);
+                }
             }
         }
     }
