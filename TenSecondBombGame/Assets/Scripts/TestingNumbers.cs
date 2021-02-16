@@ -85,7 +85,7 @@ public class TestingNumbers : MonoBehaviour
         if (Input.GetKeyDown(Click))
         {
             ClipAudio.Play();
-            wiresLeftUI();
+            //wiresLeftUI();
 
         }
     }

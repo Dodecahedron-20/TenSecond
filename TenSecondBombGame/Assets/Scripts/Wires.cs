@@ -10,6 +10,11 @@ public class Wires : MonoBehaviour
 
     public LayerMask layerMask;
 
+
+    //alex cross script parts
+    [SerializeField]
+    private TestingNumbers CutWire;
+
     void Start()
     {
         for(int i =0; i < cutWires.Length; i++)
@@ -31,6 +36,7 @@ public class Wires : MonoBehaviour
                     Debug.Log("mamma mia itsa bomb");
                     wires[0].SetActive(false);
                     cutWires[0].SetActive(true);
+                    CutWire.wiresLeftUI();
                 }
                 
                 if(hit.collider.tag == "BlueWire")
@@ -38,6 +44,7 @@ public class Wires : MonoBehaviour
                     Debug.Log("blue bomb");
                     wires[1].SetActive(false);
                     cutWires[1].SetActive(true);
+                    CutWire.wiresLeftUI();
                 }
 
                 if(hit.collider.tag == "GreenWire")
@@ -45,6 +52,7 @@ public class Wires : MonoBehaviour
                     Debug.Log("green bomb");
                     wires[2].SetActive(false);
                     cutWires[2].SetActive(true);
+                    CutWire.wiresLeftUI();
                 }
 
                 if(hit.collider.tag == "YellowWire")
@@ -52,6 +60,7 @@ public class Wires : MonoBehaviour
                     Debug.Log("yellow bomb");
                     wires[3].SetActive(false);
                     cutWires[3].SetActive(true);
+                    CutWire.wiresLeftUI();
                 }
             }
         }
