@@ -14,6 +14,9 @@ public class MenuControls : MonoBehaviour
     [SerializeField]
     private GameObject QuitPrompt = null;
 
+    [SerializeField]
+    private GameObject HowToDo = null;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -31,11 +34,24 @@ public class MenuControls : MonoBehaviour
         
     }
 
+
+
+
     //Start the Game things:
     public void StartGame()
     {
         SceneManager.LoadScene(1);
     }
+
+    //How to play
+    public void HowTo()
+    {
+        Menu.SetActive(false);
+        HowToDo.SetActive(true);
+    }
+
+
+
 
 
     //pull up credits:
