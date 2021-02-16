@@ -22,6 +22,10 @@ public class TestingNumbers : MonoBehaviour
     private int WiresTotal;
     //[SerializeField]
     private int Wiresleft;
+    
+    [SerializeField]
+    private Text FinalWireCountText;
+
 
     // here go boom
     [SerializeField]
@@ -63,7 +67,7 @@ public class TestingNumbers : MonoBehaviour
 
         //the wire coutdown
         Wiresleft = WiresTotal;
-        WiresText.text = "Wires:" + Wiresleft + "/" + WiresTotal;
+        WiresText.text = "Wires:" + Wiresleft;
 
 
 
@@ -143,11 +147,22 @@ public class TestingNumbers : MonoBehaviour
     }
 
 
-    private void wiresLeftUI()
+    public void wiresLeftUI()
     {
         Wiresleft--;
-        WiresText.text = "Wires:" + Wiresleft + "/" + WiresTotal;
+        WiresText.text = "Wires: " + Wiresleft;
+        CheckWires();
     }
+
+
+    private void CheckWires()
+    {
+        if (Wiresleft == 0)
+        {
+            wingame();
+        }
+    }
+
 
 
 
@@ -168,6 +183,9 @@ public class TestingNumbers : MonoBehaviour
         EndGameScreen.SetActive(true);
         FinalNumberText.text = "00:00:0" + secondsleft;
 
+        var endwires = WiresTotal - Wiresleft;
+        FinalWireCountText.text = "wires cut: " + endwires + "/" + WiresTotal;
+
         if (win == true)
         {
             OutcomeText.text = "congratulations on surviving";
@@ -175,6 +193,7 @@ public class TestingNumbers : MonoBehaviour
         }
         else
         {
+            
             OutcomeText.text = "You died";
         }
 
